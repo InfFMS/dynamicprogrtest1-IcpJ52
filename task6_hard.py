@@ -8,5 +8,27 @@ F(n) = F(n - 1) - 7555444 в остальных случаях.
 
 Формат вывода: программа должна печатать только одно число - ответ на задачу.
 """
+import sys
+from functools import cache
+
+sys.setrecursionlimit(100000)
 
 
+@cache
+def f(n):
+    if n == 1:
+        return 2
+    if n > 1 and f(n - 1) < 7555444:
+        return f(n - 1) + 6
+    return f(n - 1) - 7555444
+
+
+# i = 0
+# ans = 0
+# while True:
+#     i += 1
+#     ans = max(ans, f(i))
+#     print(ans)
+#     #7555448
+print(7555448)
+# Всегда четная, 7555448 - максимум, можно проверить, что достигается
